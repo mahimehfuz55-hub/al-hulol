@@ -1,0 +1,335 @@
+  <!DOCTYPE html>
+  <html lang="en" class="scroll-smooth">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Al Hulool Legal Consultancy LLC — Premium UAE Legal Services</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <script>
+          tailwind.config = {
+              theme: {
+                  extend: {
+                      colors: {
+                          navy: { 50:'#f0f3f9', 100:'#d9e0ea', 200:'#b3c1d1', 300:'#8d9fb8', 400:'#66829f', 500:'#406082', 600:'#32506a', 700:'#253f51', 800:'#172e3a', 900:'#0A192F', 950:'#060f1c' },
+                          gold: { 50:'#faf8f0', 100:'#f5edcf', 200:'#e8db9e', 300:'#d9c56a', 400:'#d4b546', 500:'#C5A059', 600:'#b08a3e', 700:'#8c6d32', 800:'#6b5329', 900:'#574423' }
+                      },
+                      fontFamily: {
+                          serif: ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
+                          sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']
+                      }
+                  }
+              }
+          }
+      </script>
+      <style>
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+          :root {
+              --navy: #0A192F;
+              --navy-light: #172e3a;
+              --gold: #C5A059;
+              --gold-light: #d9c56a;
+          }
+
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+
+          body {
+              font-family: 'Inter', system-ui, sans-serif;
+              background: var(--navy);
+              color: #e2e8f0;
+              overflow-x: hidden;
+          }
+
+          .font-display { font-family: 'Playfair Display', Georgia, serif; }
+
+          /* Scrollbar */
+          ::-webkit-scrollbar { width: 6px; }
+          ::-webkit-scrollbar-track { background: var(--navy); }
+          ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+          /* Animations */
+          @keyframes fadeInUp {
+              from { opacity: 0; transform: translateY(40px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+          }
+          @keyframes slideDown {
+              from { opacity: 0; transform: translateY(-20px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes scaleBalance {
+              0%, 100% { transform: rotate(-3deg); }
+              50% { transform: rotate(3deg); }
+          }
+          @keyframes floatGold {
+              0%, 100% { transform: translateY(0) scale(1); opacity: 0.6; }
+              50% { transform: translateY(-20px) scale(1.1); opacity: 0.8; }
+          }
+          @keyframes lineGlow {
+              0%, 100% { stroke-opacity: 0.3; }
+              50% { stroke-opacity: 1; }
+          }
+          @keyframes pulse-ring {
+              0% { transform: scale(0.8); opacity: 0.5; }
+              100% { transform: scale(2.2); opacity: 0; }
+          }
+          @keyframes dashMove {
+              to { stroke-dashoffset: 0; }
+          }
+          @keyframes shimmer {
+              0% { background-position: -200% center; }
+              100% { background-position: 200% center; }
+          }
+          @keyframes typewriter {
+              from { width: 0; }
+              to { width: 100%; }
+          }
+
+          .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+          .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+          .animate-slide-down { animation: slideDown 0.6s ease-out forwards; }
+          .delay-100 { animation-delay: 0.1s; }
+          .delay-200 { animation-delay: 0.2s; }
+          .delay-300 { animation-delay: 0.3s; }
+          .delay-400 { animation-delay: 0.4s; }
+          .delay-500 { animation-delay: 0.5s; }
+          .delay-600 { animation-delay: 0.6s; }
+          .delay-700 { animation-delay: 0.7s; }
+          .delay-800 { animation-delay: 0.8s; }
+
+          .scale-balance { animation: scaleBalance 4s ease-in-out infinite; transform-origin: center bottom; }
+          .float-gold { animation: floatGold 6s ease-in-out infinite; }
+          .line-glow { animation: lineGlow 3s ease-in-out infinite; }
+
+          /* Shimmer text */
+          .gold-shimmer {
+              background: linear-gradient(90deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
+              background-size: 200% auto;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              animation: shimmer 4s linear infinite;
+          }
+
+          /* Intersection Observer classes */
+          .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+          .reveal.visible { opacity: 1; transform: translateY(0); }
+
+          /* Sticky consult button */
+          .sticky-consult {
+              position: fixed;
+              bottom: 24px;
+              right: 24px;
+              z-index: 1000;
+              animation: fadeIn 1s ease-out 2s forwards;
+              opacity: 0;
+          }
+          .sticky-consult .pulse-dot {
+              position: absolute;
+              top: -4px;
+              right: -4px;
+              width: 14px;
+              height: 14px;
+              background: #22c55e;
+              border-radius: 50%;
+              animation: pulse-ring 1.5s ease-out infinite;
+          }
+
+          /* Nav active link */
+          .nav-link {
+              position: relative;
+              transition: color 0.3s;
+          }
+          .nav-link::after {
+              content: '';
+              position: absolute;
+              bottom: -4px;
+              left: 50%;
+              width: 0;
+              height: 2px;
+              background: var(--gold);
+              transition: all 0.3s;
+              transform: translateX(-50%);
+          }
+          .nav-link:hover::after, .nav-link.active::after {
+              width: 100%;
+          }
+          .nav-link:hover, .nav-link.active { color: var(--gold); }
+
+          /* Card hover */
+          .service-card {
+              transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .service-card:hover {
+              transform: translateY(-8px);
+              box-shadow: 0 20px 60px rgba(197, 160, 89, 0.15);
+          }
+          .service-card:hover .card-icon {
+              transform: scale(1.1) rotate(5deg);
+          }
+          .card-icon { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+          /* Testimonial card */
+          .testimonial-card {
+              transition: all 0.3s ease;
+          }
+          .testimonial-card:hover {
+              transform: scale(1.02);
+          }
+
+          /* Dashboard */
+          .dashboard-panel {
+              background: linear-gradient(135deg, rgba(23, 46, 58, 0.8) 0%, rgba(10, 25, 47, 0.9) 100%);
+              backdrop-filter: blur(10px);
+          }
+          .case-row {
+              transition: all 0.3s ease;
+          }
+          .case-row:hover {
+              background: rgba(197, 160, 89, 0.08);
+          }
+          .status-badge {
+              transition: all 0.3s;
+          }
+
+          /* Modal */
+          .modal-overlay {
+              opacity: 0;
+              pointer-events: none;
+              transition: opacity 0.3s;
+          }
+          .modal-overlay.active {
+              opacity: 1;
+              pointer-events: all;
+          }
+          .modal-content {
+              transform: scale(0.9) translateY(20px);
+              transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .modal-overlay.active .modal-content {
+              transform: scale(1) translateY(0);
+          }
+
+          /* Particle canvas */
+          #particles-canvas {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+          }
+
+          /* Divider line animation */
+          .gold-divider {
+              height: 1px;
+              background: linear-gradient(90deg, transparent, var(--gold), transparent);
+          }
+
+          /* Input styles */
+          .form-input {
+              transition: all 0.3s;
+              border: 1px solid rgba(197, 160, 89, 0.2);
+          }
+          .form-input:focus {
+              border-color: var(--gold);
+              box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+              outline: none;
+          }
+
+          /* Progress bar animation */
+          .progress-fill {
+              transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+              width: 0;
+          }
+
+          /* Mobile menu */
+          .mobile-menu {
+              transform: translateX(100%);
+              transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          }
+          .mobile-menu.open {
+              transform: translateX(0);
+          }
+
+          /* Tab active */
+          .tab-btn.active {
+              color: var(--gold);
+              border-bottom-color: var(--gold);
+          }
+
+          /* Tooltip */
+          .tooltip {
+              position: relative;
+          }
+          .tooltip::before {
+              content: attr(data-tip);
+              position: absolute;
+              bottom: 120%;
+              left: 50%;
+              transform: translateX(-50%) scale(0.8);
+              background: var(--navy);
+              color: var(--gold);
+              padding: 6px 12px;
+              border-radius: 6px;
+              font-size: 12px;
+              white-space: nowrap;
+              opacity: 0;
+              pointer-events: none;
+              transition: all 0.2s;
+              border: 1px solid rgba(197, 160, 89, 0.3);
+          }
+          .tooltip:hover::before {
+              opacity: 1;
+              transform: translateX(-50%) scale(1);
+          }
+
+          /* Number counter */
+          .counter {
+              display: inline-block;
+          }
+
+          /* Smooth section transitions */
+          section {
+              position: relative;
+          }
+
+          @media (max-width: 768px) {
+              .sticky-consult {
+                  bottom: 16px;
+                  right: 16px;
+              }
+          }
+      </style>
+  </head>
+  <body class="antialiased">
+
+      <!-- ========== NAVIGATION ========== -->
+      <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="flex items-center justify-between h-20">
+                  <!-- Logo -->
+                  <a href="#hero" class="flex items-center gap-3 group">
+                      <div class="relative">
+                          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <rect width="44" height="44" rx="10" fill="#C5A059"/>
+                              <path d="M12 16h20M22 16v14M14 30h16" stroke="#0A192F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <circle cx="22" cy="16" r="2.5" fill="#0A192F"/>
+                          </svg>
+                          <div class="absolute -inset-1 bg-gold-500/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      </div>
+                      <div>
+                          <span class="text-lg font-bold text-gold-500 tracking-wide">Al Hulool</span>
+                          <span class="block text-[10px] text-navy-300 uppercase tracking-[0.2em] -mt-1">Legal Consultancy</span>
+                      </div>
+                  </a>
+
+                  <!-- Desktop Menu -->
+                  <div class="hidden md:flex items-center gap-8">
+                      <a href="#hero" class="nav-link text-sm text-navy-200">Home</a>
+                      <a href="#services" class="nav-link text-sm text-navy-200">Expertise</a>
+                      <a href="#cases
